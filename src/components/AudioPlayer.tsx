@@ -73,17 +73,17 @@ const AudioPlayer = ({ title, subtitle, audioSrc, className }: AudioPlayerProps)
   };
 
   return (
-    <div className={cn('magic-card relative overflow-hidden group', className)}>
-      <div className="absolute -top-10 -right-10 w-40 h-40 bg-magic-100/30 rounded-full blur-3xl group-hover:bg-magic-300/30 transition-all duration-500"></div>
+    <div className={cn('relative overflow-hidden group', className)}>
+      <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-500"></div>
       
       <div className="relative z-10">
-        <h3 className="text-xl font-bold text-magic-900 mb-1">{title}</h3>
+        <h3 className="text-xl font-bold text-white mb-1">{title}</h3>
         {subtitle && <p className="text-sm text-muted-foreground mb-3">{subtitle}</p>}
         
         <div className="flex items-center gap-4 mt-4">
           <button 
             onClick={togglePlay}
-            className="w-10 h-10 rounded-full bg-magic-500 text-white flex items-center justify-center hover:bg-magic-700 transition-colors"
+            className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/80 transition-colors"
           >
             {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-1" />}
           </button>
@@ -91,22 +91,22 @@ const AudioPlayer = ({ title, subtitle, audioSrc, className }: AudioPlayerProps)
           <div 
             ref={progressRef}
             onClick={handleProgressClick}
-            className="flex-1 h-2 bg-magic-100 rounded-full cursor-pointer relative"
+            className="flex-1 h-2 bg-secondary rounded-full cursor-pointer relative"
           >
             <div 
-              className="absolute h-full bg-magic-500 rounded-full"
+              className="absolute h-full bg-primary rounded-full"
               style={{ width: `${(currentTime / duration) * 100}%` }}
             ></div>
           </div>
           
           <button 
             onClick={toggleMute}
-            className="w-8 h-8 rounded-full text-magic-700 flex items-center justify-center hover:bg-magic-100 transition-colors"
+            className="w-8 h-8 rounded-full text-white flex items-center justify-center hover:bg-primary/20 transition-colors"
           >
             {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
           </button>
           
-          <span className="text-xs font-medium w-12 text-right">
+          <span className="text-xs font-medium w-12 text-right text-white">
             {formatTime(currentTime)} / {formatTime(duration)}
           </span>
         </div>

@@ -12,22 +12,26 @@ const testimonials = [
   {
     name: 'Мария К.',
     text: 'Моя Песня Силы стала для меня настоящим откровением. С первых нот я почувствовала, что она действительно моя, словно Настя заглянула в самое сердце и вытащила оттуда все мои мечты и стремления. Теперь слушаю ее каждое утро для настроя на день!',
-    rating: 5
+    rating: 5,
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80'
   },
   {
     name: 'Александр и Елена',
     text: 'Заказали песню для нашей пары, чтобы укрепить отношения в непростой период. Результат превзошел все ожидания! Песня словно отражает всю глубину наших чувств и напоминает, почему мы вместе. Спасибо за такой волшебный подарок нашей любви!',
-    rating: 5
+    rating: 5,
+    image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80'
   },
   {
     name: 'Оксана В.',
     text: 'Заказала Песню Силы для своего бизнеса. Теперь она звучит в нашем офисе и настраивает команду на позитивный лад. Клиенты тоже оценили - часто спрашивают, что это за волшебная мелодия играет! Творчество Насти - это настоящее волшебство.',
-    rating: 5
+    rating: 5,
+    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80'
   },
   {
     name: 'Дмитрий Л.',
     text: 'Скептически относился к идее персональной песни, но решил попробовать. Теперь не представляю свою жизнь без нее! Она помогает мне сосредоточиться и настроиться на нужный лад в сложные моменты. Настя, ты действительно умеешь находить нужные слова и звуки!',
-    rating: 5
+    rating: 5,
+    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80'
   }
 ];
 
@@ -49,7 +53,7 @@ const TestimonialsSection = ({ className }: TestimonialsSectionProps) => {
       <div className="absolute top-40 right-0 w-60 h-60 bg-energy-300/10 rounded-full blur-3xl"></div>
       
       <div className="container px-4 mx-auto">
-        <h2 className="text-3xl md:text-4xl font-cursive mb-10 gradient-text text-center">
+        <h2 className="text-3xl md:text-4xl font-cursive mb-10 text-white text-center">
           Отзывы о Песнях Силы
         </h2>
         
@@ -72,13 +76,19 @@ const TestimonialsSection = ({ className }: TestimonialsSectionProps) => {
                 <div key={index} className="w-full flex-shrink-0 px-4">
                   <div className="magic-card text-center h-full">
                     <div className="flex justify-center mb-4">
+                      <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-primary mb-4">
+                        <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
+                      </div>
+                    </div>
+                    
+                    <div className="flex justify-center mb-4">
                       {Array.from({ length: testimonial.rating }).map((_, i) => (
                         <Star key={i} className="text-energy-300 fill-energy-300" size={20} />
                       ))}
                     </div>
                     
-                    <p className="italic mb-4">{testimonial.text}</p>
-                    <p className="font-bold text-magic-700">{testimonial.name}</p>
+                    <p className="italic mb-4 text-white">{testimonial.text}</p>
+                    <p className="font-bold text-primary">{testimonial.name}</p>
                   </div>
                 </div>
               ))}
@@ -99,7 +109,7 @@ const TestimonialsSection = ({ className }: TestimonialsSectionProps) => {
               <button
                 key={index}
                 className={`w-3 h-3 rounded-full transition-colors ${
-                  index === activeIndex ? 'bg-magic-500' : 'bg-magic-100'
+                  index === activeIndex ? 'bg-primary' : 'bg-primary/30'
                 }`}
                 onClick={() => setActiveIndex(index)}
               />
